@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equity Tribe — Free Signals Community</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0d0d;
+  --surface: #141414;
+  --border: rgba(255,255,255,0.08);
+  --text: #f0ede8;
+  --muted: rgba(240,237,232,0.45);
+  --green: #1aff6b;
+  --green-dim: rgba(26,255,107,0.12);
+  --green-solid: #00c44f;
+  --white: #f0ede8;
+  --radius: 2px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  height: 64px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(13,13,13,0.85);
+  backdrop-filter: blur(16px);
+}
+.nav-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.2rem;
+  color: var(--white);
+  letter-spacing: 0.01em;
+}
+.nav-logo em { color: var(--green); font-style: normal; }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  background: var(--green) !important;
+  color: #000 !important;
+  padding: 9px 20px;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  transition: opacity 0.2s !important;
+}
+.nav-cta:hover { opacity: 0.85; color: #000 !important; }
+
+/* ─── SECTIONS SHARED ─── */
+section { padding: 100px 48px; }
+.tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.section-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  line-height: 1.1;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 480px;
+}
+hr.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 48px;
+}
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.hero-glow {
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 700px; height: 340px;
+  background: radial-gradient(ellipse at top, rgba(26,255,107,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green);
+  font-weight: 500;
+  margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--green);
+  display: block;
+}
+.hero-headline {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  line-height: 1.04;
+  font-weight: 400;
+  color: var(--white);
+  max-width: 820px;
+  margin-bottom: 28px;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--green);
+}
+.hero-body {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 440px;
+  margin-bottom: 44px;
+}
+.hero-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--green);
+  color: #000;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover { opacity: 0.85; }
+.hero-note {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.hero-stats {
+  display: flex; gap: 48px;
+  margin-top: 72px;
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.hero-stat-val {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.4rem;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-val span { color: var(--green); }
+.hero-stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── TICKER STRIP ─── */
+.ticker-wrap {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  padding: 14px 0;
+  background: var(--surface);
+}
+.ticker-track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: ticker 28s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 32px;
+  white-space: nowrap;
+  border-right: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+.ticker-item .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── PERFORMANCE ─── */
+#performance {
+  padding: 100px 48px;
+  border-bottom: 1px solid var(--border);
+}
+.perf-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 56px;
+  flex-wrap: wrap; gap: 24px;
+}
+.perf-badge {
+  background: var(--green-dim);
+  border: 1px solid rgba(26,255,107,0.2);
+  color: var(--green);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 7px 14px;
+  align-self: flex-start;
+}
+.perf-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.perf-card {
+  background: var(--bg);
+  padding: 36px 28px;
+  display: flex; flex-direction: column;
+}
+.perf-card:hover { background: #111; }
+.perf-card .p-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.perf-card .p-val {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.6rem;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.perf-card .p-val.green { color: var(--green); }
+.perf-card .p-sub {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: auto;
+}
+.perf-card .p-badge {
+  display: inline-block;
+  margin-top: 10px;
+  background: rgba(26,255,107,0.1);
+  color: var(--green);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 8px;
+  border: 1px solid rgba(26,255,107,0.2);
+  width: fit-content;
+}
+
+/* ─── WHAT YOU GET ─── */
+#what {
+  padding: 100px 48px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.what-features { margin-top: 12px; }
+.what-feature {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 24px; align-items: flex-start;
+}
+.what-feature:first-child { border-top: 1px solid var(--border); }
+.feat-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.1rem;
+  color: var(--green);
+  min-width: 28px;
+  opacity: 0.6;
+  padding-top: 2px;
+}
+.feat-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.feat-body {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ─── PROCESS ─── */
+#process {
+  padding: 100px 48px;
+  border-bottom: 1px solid var(--border);
+}
+.process-header { margin-bottom: 64px; }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.process-step {
+  background: var(--bg);
+  padding: 40px 32px;
+  position: relative;
+}
+.process-step:hover { background: #111; }
+.step-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 3rem;
+  color: rgba(26,255,107,0.12);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.step-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.step-body {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ─── TESTIMONIALS ─── */
+#testimonials {
+  padding: 100px 48px;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.testi-header { margin-bottom: 56px; }
+.testi-scroll-wrap { overflow: hidden; }
+.testi-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: scrollTesti 40s linear infinite;
+}
+.testi-track:hover { animation-play-state: paused; }
+@keyframes scrollTesti {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.testi-card {
+  width: 320px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  padding: 28px;
+  background: var(--surface);
+}
+.testi-stars { color: var(--green); font-size: 0.75rem; margin-bottom: 14px; letter-spacing: 2px; }
+.testi-quote {
+  font-size: 0.87rem;
+  color: var(--text);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  font-style: italic;
+  font-family: 'Instrument Serif', serif;
+}
+.testi-author {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.testi-author span {
+  display: block;
+  margin-top: 2px;
+  color: var(--green);
+  font-size: 0.65rem;
+}
+
+/* ─── REQUIREMENTS ─── */
+#requirements {
+  padding: 100px 48px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.req-list { margin-top: 12px; }
+.req-row {
+  display: flex; gap: 20px; align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+}
+.req-row:first-child { border-top: 1px solid var(--border); }
+.req-icon {
+  width: 32px; height: 32px;
+  border: 1px solid rgba(26,255,107,0.3);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  color: var(--green);
+  font-size: 0.8rem;
+}
+.req-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.req-body { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+/* Join box */
+.join-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 40px;
+}
+.join-box-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.9rem;
+  color: var(--white);
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+.join-box-sub {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+.join-box-note {
+  margin-top: 16px;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ─── FORM ─── */
+#apply {
+  padding: 100px 48px;
+  border-bottom: 1px solid var(--border);
+}
+.apply-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.apply-header { margin-bottom: 52px; }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+  border-radius: 0;
+  width: 100%;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: rgba(26,255,107,0.4);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(240,237,232,0.2); }
+.form-group select option { background: #1a1a1a; }
+.form-group textarea { resize: vertical; min-height: 80px; }
+
+.tc-row {
+  grid-column: 1 / -1;
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.tc-row input[type="checkbox"] {
+  width: 16px; height: 16px; min-width: 16px;
+  margin-top: 2px;
+  accent-color: var(--green);
+  cursor: pointer;
+}
+.tc-row label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+  cursor: pointer;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.tc-row label a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
+
+.submit-wrap { grid-column: 1 / -1; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.form-submit {
+  background: var(--green);
+  color: #000;
+  border: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 15px 32px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.form-submit:hover { opacity: 0.85; }
+.submit-note { font-size: 0.75rem; color: var(--muted); }
+
+/* ─── FAQ ─── */
+#faq {
+  padding: 100px 48px;
+  border-bottom: 1px solid var(--border);
+}
+.faq-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  align-items: start;
+}
+.faq-list { margin-top: 4px; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: left;
+  padding: 22px 0;
+  cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--green); }
+.faq-q .faq-arrow {
+  color: var(--muted);
+  font-size: 1rem;
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+.faq-item.open .faq-arrow { transform: rotate(45deg); color: var(--green); }
+.faq-a {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.3s;
+}
+.faq-item.open .faq-a { max-height: 200px; padding-bottom: 20px; }
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 48px;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 24px;
+}
+.footer-logo {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.1rem;
+  color: var(--white);
+}
+.footer-logo em { color: var(--green); font-style: normal; }
+.footer-links { display: flex; gap: 28px; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-copy {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ─── TOAST ─── */
+#toast {
+  position: fixed; bottom: 28px; right: 28px;
+  background: var(--green);
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  z-index: 999;
+  opacity: 0; pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+#toast.show { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  section, #performance, #what, #requirements, #process, #faq, #apply, footer { padding: 64px 24px; }
+  #hero { padding: 100px 24px 64px; }
+  #what, #requirements { grid-template-columns: 1fr; gap: 40px; }
+  .faq-inner { grid-template-columns: 1fr; gap: 32px; }
+  .perf-grid { grid-template-columns: 1fr 1fr; }
+  .perf-card:nth-child(5) { grid-column: 1 / -1; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: 1; }
+  .tc-row { grid-column: 1; }
+  .submit-wrap { grid-column: 1; }
+  .hero-stats { gap: 32px; }
+  footer { flex-direction: column; align-items: flex-start; gap: 20px; }
+  hr.divider { margin: 0 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Equity <em>Tribe</em></div>
+  <div class="nav-links">
+    <a href="#performance">Performance</a>
+    <a href="#what">Signals</a>
+    <a href="#process">Process</a>
+    <a href="#requirements">Requirements</a>
+    <a href="#faq">FAQ</a>
+    <a href="#apply" class="nav-cta">Apply now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-eyebrow">Free signals community</div>
+  <h1 class="hero-headline">
+    Where traders stop<br><em>searching</em> and start<br>winning.
+  </h1>
+  <p class="hero-body">
+    Equity Tribe shares verified live trade signals — completely free. Real trades, real results, built on discipline and proven risk management.
+  </p>
+  <div class="hero-actions">
+    <a href="#apply" class="btn-primary">Apply to join →</a>
+    <span class="hero-note">No fees · No upsells · Representative contacts you within 7 days</span>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-val"><span>70</span>%</div>
+      <div class="hero-stat-label">Win Rate (Jan–Apr 2026)</div>
+    </div>
+    <div>
+      <div class="hero-stat-val">+<span>87.9</span>R</div>
+      <div class="hero-stat-label">Net R gained this period</div>
+    </div>
+    <div>
+      <div class="hero-stat-val"><span>20</span>+</div>
+      <div class="hero-stat-label">Public live calls made</div>
+    </div>
+    <div>
+      <div class="hero-stat-val"><span>1M</span>+</div>
+      <div class="hero-stat-label">Monthly trader reach</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker">
+    <div class="ticker-item"><span class="dot"></span>70% Win Rate</div>
+    <div class="ticker-item"><span class="dot"></span>+87.9R Net</div>
+    <div class="ticker-item"><span class="dot"></span>Live Signals</div>
+    <div class="ticker-item"><span class="dot"></span>Free Access</div>
+    <div class="ticker-item"><span class="dot"></span>London Session</div>
+    <div class="ticker-item"><span class="dot"></span>New York Session</div>
+    <div class="ticker-item"><span class="dot"></span>Prop Firm Ready</div>
+    <div class="ticker-item"><span class="dot"></span>Risk Management First</div>
+    <div class="ticker-item"><span class="dot"></span>HFM · Exness</div>
+    <div class="ticker-item"><span class="dot"></span>GFT Funded Trader</div>
+    <!-- dupe for seamless loop -->
+    <div class="ticker-item"><span class="dot"></span>70% Win Rate</div>
+    <div class="ticker-item"><span class="dot"></span>+87.9R Net</div>
+    <div class="ticker-item"><span class="dot"></span>Live Signals</div>
+    <div class="ticker-item"><span class="dot"></span>Free Access</div>
+    <div class="ticker-item"><span class="dot"></span>London Session</div>
+    <div class="ticker-item"><span class="dot"></span>New York Session</div>
+    <div class="ticker-item"><span class="dot"></span>Prop Firm Ready</div>
+    <div class="ticker-item"><span class="dot"></span>Risk Management First</div>
+    <div class="ticker-item"><span class="dot"></span>HFM · Exness</div>
+    <div class="ticker-item"><span class="dot"></span>GFT Funded Trader</div>
+  </div>
+</div>
+
+<!-- PERFORMANCE SCORECARD -->
+<section id="performance">
+  <div class="perf-header">
+    <div>
+      <div class="tag">Live Performance</div>
+      <div class="section-title">Monthly scorecard.</div>
+    </div>
+    <div class="perf-badge">May 2026</div>
+  </div>
+
+  <div class="perf-grid">
+    <div class="perf-card">
+      <div class="p-label">Win Rate</div>
+      <div class="p-val green">70%</div>
+      <div class="p-sub">Jan – Apr 2026 average</div>
+    </div>
+    <div class="perf-card">
+      <div class="p-label">Total Trades</div>
+      <div class="p-val">42</div>
+      <div class="p-sub">Closed positions</div>
+    </div>
+    <div class="perf-card">
+      <div class="p-label">Net R Gained</div>
+      <div class="p-val green">+87.9R</div>
+      <div class="p-sub">Risk-multiple basis</div>
+    </div>
+    <div class="perf-card">
+      <div class="p-label">Biggest Winner</div>
+      <div class="p-val">+6.2R</div>
+      <div class="p-sub">Single trade return</div>
+      <div class="p-badge">★ Best Trade</div>
+    </div>
+    <div class="perf-card">
+      <div class="p-label">Best Pair / Month</div>
+      <div class="p-val">USDCHF</div>
+      <div class="p-sub">Strongest edge this period</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHAT YOU GET -->
+<section id="what">
+  <div>
+    <div class="tag">What you receive</div>
+    <h2 class="section-title">Signals done<br>for you.</h2>
+    <p class="section-sub">Join the community serious traders rely on for verified, real-time signal delivery — at no cost.</p>
+  </div>
+  <div class="what-features">
+    <div class="what-feature">
+      <div class="feat-num">01</div>
+      <div>
+        <div class="feat-title">Live Trade Signals</div>
+        <div class="feat-body">Real-time entry, stop loss, and take profit levels shared directly — no delay, no vague analysis.</div>
+      </div>
+    </div>
+    <div class="what-feature">
+      <div class="feat-num">02</div>
+      <div>
+        <div class="feat-title">Risk Management Per Signal</div>
+        <div class="feat-body">Every signal comes with a defined R-risk so you always know your position sizing before entering.</div>
+      </div>
+    </div>
+    <div class="what-feature">
+      <div class="feat-num">03</div>
+      <div>
+        <div class="feat-title">London & New York Coverage</div>
+        <div class="feat-body">Signals cover the two most liquid sessions — where the real money moves.</div>
+      </div>
+    </div>
+    <div class="what-feature">
+      <div class="feat-num">04</div>
+      <div>
+        <div class="feat-title">Monthly Performance Reports</div>
+        <div class="feat-body">Full transparent breakdown of win rate, R gains, and top pairs every month. No hiding losses.</div>
+      </div>
+    </div>
+    <div class="what-feature">
+      <div class="feat-num">05</div>
+      <div>
+        <div class="feat-title">Community Access</div>
+        <div class="feat-body">Connect with other disciplined traders receiving the same signals. Shared accountability, shared growth.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-header">
+    <div class="tag">How it works</div>
+    <h2 class="section-title">A structured path<br>to getting set up.</h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Apply</div>
+      <div class="step-body">Fill the application form below with your contact details and preferred method of communication.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">Review</div>
+      <div class="step-body">Our team reviews your application. We check that you meet the baseline requirements to trade responsibly.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">Contact</div>
+      <div class="step-body">A representative reaches out within <strong style="color:var(--white)">7 business days</strong> via your preferred contact method to onboard you.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Trade</div>
+      <div class="step-body">You're in. Signals start flowing. Follow the risk rules, execute with discipline, track your results.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="padding-left:0;padding-right:0;">
+  <div style="padding:0 48px 48px;" class="testi-header">
+    <div class="tag">Community</div>
+    <h2 class="section-title">Traders already<br>inside Equity Tribe.</h2>
+  </div>
+  <div class="testi-scroll-wrap">
+    <div class="testi-track" id="testiTrack">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"First time following structured signals — actually know my risk before I enter every trade now. Total game changer."</div>
+        <div class="testi-author">Emeka O. <span>Equity Tribe Member</span></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"The transparency is what got me. Win rate, losses, everything is posted. You know exactly what you're following."</div>
+        <div class="testi-author">Fatima A. <span>Equity Tribe Member</span></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Was blowing accounts before. The risk management framework that comes with each signal is the piece I was missing."</div>
+        <div class="testi-author">Chidi M. <span>Equity Tribe Member</span></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Been in three signal groups. This is the only one where every month I actually see my account grow, not shrink."</div>
+        <div class="testi-author">Tolu B. <span>Equity Tribe Member</span></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Free access to this quality of signals is unreal. The monthly scorecards keep you accountable and informed."</div>
+        <div class="testi-author">Ifeoma K. <span>Equity Tribe Member</span></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Signals come in during London session, tight SL, clear TP. I just execute. No second-guessing anymore."</div>
+        <div class="testi-author">Seun R. <span>Equity Tribe Member</span></div>
+      </div>
+      <!-- dupe -->
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"First time following structured signals — actually know my risk before I enter every trade now. Total game changer."</div>
+        <div class="testi-author">Emeka O. <span>Equity Tribe Member</span></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"The transparency is what got me. Win rate, losses, everything is posted. You know exactly what you're following."</div>
+        <div class="testi-author">Fatima A. <span>Equity Tribe Member</span></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Was blowing accounts before. The risk management framework that comes with each signal is the piece I was missing."</div>
+        <div class="testi-author">Chidi M. <span>Equity Tribe Member</span></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Been in three signal groups. This is the only one where every month I actually see my account grow, not shrink."</div>
+        <div class="testi-author">Tolu B. <span>Equity Tribe Member</span></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Free access to this quality of signals is unreal. The monthly scorecards keep you accountable and informed."</div>
+        <div class="testi-author">Ifeoma K. <span>Equity Tribe Member</span></div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Signals come in during London session, tight SL, clear TP. I just execute. No second-guessing anymore."</div>
+        <div class="testi-author">Seun R. <span>Equity Tribe Member</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- REQUIREMENTS -->
+<section id="requirements">
+  <div>
+    <div class="tag">Who this is for</div>
+    <h2 class="section-title">Are you<br>ready to join?</h2>
+    <p class="section-sub">Equity Tribe signals are free — but they're built for traders who are serious. Four simple requirements stand between you and access.</p>
+  </div>
+  <div>
+    <div class="req-list">
+      <div class="req-row">
+        <div class="req-icon">✓</div>
+        <div>
+          <div class="req-title">Basic Trading Knowledge</div>
+          <div class="req-body">You understand charts, entries, stops, and what risk means. We don't teach from scratch.</div>
+        </div>
+      </div>
+      <div class="req-row">
+        <div class="req-icon">$</div>
+        <div>
+          <div class="req-title">Minimum $500 Capital</div>
+          <div class="req-body">Enough to apply proper position sizing on each signal we share.</div>
+        </div>
+      </div>
+      <div class="req-row">
+        <div class="req-icon">♟</div>
+        <div>
+          <div class="req-title">Risk Management Discipline</div>
+          <div class="req-body">You commit to following the risk rules given per signal. No deviation. No gambling.</div>
+        </div>
+      </div>
+      <div class="req-row">
+        <div class="req-icon">§</div>
+        <div>
+          <div class="req-title">Accept Terms & Conditions</div>
+          <div class="req-body">Signals are shared for educational purposes. You trade at your own discretion and full responsibility.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- APPLY FORM -->
+<section id="apply">
+  <div class="apply-inner">
+    <div class="apply-header">
+      <div class="tag">Apply now</div>
+      <h2 class="section-title">Get access.<br>It's completely free.</h2>
+      <p class="section-sub" style="margin-top:12px;">Fill in your details. A member of the Equity Tribe team will contact you within 7 business days via your preferred method to complete your onboarding.</p>
+    </div>
+
+    <form class="form-grid" id="applyForm" onsubmit="submitForm(event)">
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" placeholder="e.g. Chukwuemeka Obi" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" placeholder="+234 800 000 0000" required>
+      </div>
+      <div class="form-group">
+        <label for="whatsapp">WhatsApp Number *</label>
+        <input type="tel" id="whatsapp" placeholder="+234 800 000 0000" required>
+      </div>
+      <div class="form-group">
+        <label for="telegram">Telegram ID (Optional)</label>
+        <input type="text" id="telegram" placeholder="@yourtelegramid">
+      </div>
+      <div class="form-group">
+        <label for="contact">Preferred Contact Method *</label>
+        <select id="contact" required>
+          <option value="" disabled selected>Select one</option>
+          <option value="whatsapp">WhatsApp</option>
+          <option value="email">Email</option>
+          <option value="telegram">Telegram</option>
+          <option value="phone">Phone Call</option>
+        </select>
+      </div>
+
+      <div class="tc-row">
+        <input type="checkbox" id="terms" required>
+        <label for="terms">
+          I confirm I have basic trading knowledge, a minimum of $500 in trading capital, and agree to follow the risk management rules provided with each signal. I accept the <a href="#">Terms & Conditions</a> and understand that all signals are educational and not financial advice. I trade at my own risk.
+        </label>
+      </div>
+
+      <div class="submit-wrap">
+        <button type="submit" class="form-submit" id="submitBtn">Submit application →</button>
+        <span class="submit-note">A representative will reach out within 7 business days.</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-inner">
+    <div>
+      <div class="tag">FAQ</div>
+      <h2 class="section-title">Answers to your<br>questions.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is this really free? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">Yes. Equity Tribe signals are completely free to access. There is no subscription, no hidden fee, and no upsell waiting for you after you join.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What markets are the signals for? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">Signals primarily cover forex pairs (with a strong edge on CHF pairs and majors), with coverage during London and New York sessions.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How are signals delivered? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">After onboarding, signals are delivered through the channel you specified (WhatsApp, Telegram, or email) in real time during active sessions.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How long does onboarding take? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">A representative will contact you within 7 business days of submitting your application to complete setup.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do I need a specific broker? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">No specific broker is required, though Equity Tribe works with HFM and Exness. Your representative can advise you on broker setup if needed.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What if I have less than $500? <span class="faq-arrow">+</span></button>
+        <div class="faq-a">The $500 minimum is required to properly apply position sizing to the signals. Trading with less puts your account at disproportionate risk — we maintain this standard to protect members.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Equity <em>Tribe</em> Limited</div>
+  <div class="footer-links">
+    <a href="#performance">Performance</a>
+    <a href="#apply">Apply</a>
+    <a href="#">Terms</a>
+    <a href="#">@Heis1X</a>
+  </div>
+  <div class="footer-copy">© 2026 Equity Tribe Ltd · Signals are educational, not financial advice.</div>
+</footer>
+
+<div id="toast">Application submitted ✓</div>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    e.target.reset();
+    btn.textContent = 'Submit application →';
+    btn.disabled = false;
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 4000);
+  }, 1400);
+}
+
+// Fade-in on scroll
+const io = new IntersectionObserver(entries => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.style.opacity = '1';
+      el.target.style.transform = 'none';
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.perf-card, .what-feature, .process-step, .req-row, .faq-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(18px)';
+  el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+  io.observe(el);
+});
+</script>
+</body>
+</html>
